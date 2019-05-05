@@ -37,7 +37,7 @@ public class ReservationController {
     public Iterable<Reservation> getAllBookings(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateIn,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOut) {
-        return reservationRepository.findAllByDateInLessThanEqualAndDateOutGreaterThanEqual(dateIn, dateOut);
+        return reservationRepository.findAllByDateInGreaterThanEqualAndDateOutLessThanEqual(dateIn, dateOut);
     }
 
 }
