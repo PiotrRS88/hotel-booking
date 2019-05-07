@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
-    List<Reservation> findAllByDateInGreaterThanEqualAndDateOutLessThanEqual(LocalDate dateIn, LocalDate dateOut); //between trzeba dodać!
 
-    //findAllByDateInLessThanEqualAndDateOutGreaterThanEqual
+    List<Reservation> findAllByDateInGreaterThanEqualAndDateOutLessThanEqual(LocalDate dateIn, LocalDate dateOut);
+    //filtrowanie wszystkich wolnych pokoi
+    //wyszukać listę pokoi które nie maja zadnych rezerwacji w danym okresie
 }

@@ -1,43 +1,45 @@
 package com.example.hotelbooking.controllers;
 
 import com.example.hotelbooking.entities.Reservation;
-import com.example.hotelbooking.repositories.ReservationRepository;
+import com.example.hotelbooking.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
-@RestController
-@RequestMapping(Endpoints.RESERVATION_GLOBAL)
+@Controller //wynik w postaci templatki, a nie json- tak jak @RestController
+@RequestMapping("/api/reservation")
 public class ReservationController {
-    private ReservationRepository reservationRepository;
+    private final ReservationService reservationService;
 
     @Autowired
-    public ReservationController(ReservationRepository reservationRepository) {
-        this.reservationRepository = reservationRepository;
+    public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
     }
 
     @GetMapping
     public Iterable<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
+        return reservationService.findAll();
     }
 
     @PostMapping
     public Reservation addReservation(@RequestBody Reservation reservation) {
-        return reservationRepository.save(reservation);
+        return reservationService.save(reservation);
     }
 
     @DeleteMapping
-    public void cancelReservation(@RequestParam Long id) {
-        reservationRepository.deleteById(id);
+    public String cancelReservation(@RequestParam Long id) {
+        reservationService.delete(id);
+        return "cancelReservationResult";
     }
 
-    @GetMapping(Endpoints.RESERVATION_BOOKED)
+    @GetMapping("/booked")
     public Iterable<Reservation> getAllBookings(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateIn,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOut) {
-        return reservationRepository.findAllByDateInGreaterThanEqualAndDateOutLessThanEqual(dateIn, dateOut);
+        return reservationService.getBookingsByDates(dateIn, dateOut);
     }
 
 }
