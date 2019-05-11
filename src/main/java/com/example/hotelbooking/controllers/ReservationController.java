@@ -4,12 +4,11 @@ import com.example.hotelbooking.entities.Reservation;
 import com.example.hotelbooking.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
-@Controller //wynik w postaci templatki, a nie json- tak jak @RestController
+@RestController
 @RequestMapping("/api/reservation")
 public class ReservationController {
     private final ReservationService reservationService;
@@ -41,5 +40,11 @@ public class ReservationController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOut) {
         return reservationService.getBookingsByDates(dateIn, dateOut);
     }
+
+    @GetMapping("/empty")
+    public Iterable<Reservation> getEmpty() {
+        return reservationService.getEmptyRooms();
+    }
+
 
 }
