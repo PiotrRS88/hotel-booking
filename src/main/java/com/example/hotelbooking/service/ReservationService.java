@@ -1,7 +1,6 @@
 package com.example.hotelbooking.service;
 
 import com.example.hotelbooking.entities.Reservation;
-import com.example.hotelbooking.entities.Room;
 
 import java.time.LocalDate;
 import java.util.List;

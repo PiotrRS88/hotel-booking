@@ -1,7 +1,6 @@
 package com.example.hotelbooking.repositories;
 
 import com.example.hotelbooking.entities.Reservation;
-import com.example.hotelbooking.entities.Room;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -34,6 +33,8 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
     List<Integer>  findFreeRoomsByDate(@Param("dateIn") LocalDate dateIn, @Param("dateOut") LocalDate dateOut);
 
 
+    @Query(value = "SELECT g.email FROM guest g LEFT JOIN reservation rs ON rs.guest_id = g.id WHERE (CURRENT_DATE + INTERVAL 1 DAY ) = rs.date_in", nativeQuery = true)
+    List<String> findEmailToRemind();
 
     //filtrowanie wszystkich wolnych pokoi
     //wyszukać listę pokoi które nie maja zadnych rezerwacji w danym okresie

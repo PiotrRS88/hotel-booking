@@ -11,10 +11,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.time.LocalDate;
 
 @SpringBootApplication
+@EnableScheduling
 public class HotelBookingApplication {
     @Autowired
     GuestRepository guestRepository;
@@ -29,10 +31,10 @@ public class HotelBookingApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        Guest g1 = new Guest("Adam", "Mickiewicz");
+        Guest g1 = new Guest("Adam", "Mickiewicz", "szarkiewicz@gmail.com");
         guestRepository.save(g1);
 
-        Guest g2 = new Guest("Henryk", "Sienkiewicz");
+        Guest g2 = new Guest("Henryk", "Sienkiewicz", "szarkiewicz@gmail.com");
         guestRepository.save(g2);
 
         Room room1 = new Room(1);
@@ -44,8 +46,8 @@ public class HotelBookingApplication {
         roomRepository.save(room3);
         roomRepository.save(room4);
 
-        LocalDate localDate1 = LocalDate.of(2019, 06, 10);
-        LocalDate localDate2 = LocalDate.of(2019, 06, 14);
+        LocalDate localDate1 = LocalDate.of(2019, 05, 13);
+        LocalDate localDate2 = LocalDate.of(2019, 05, 15);
 
         LocalDate localDate3 = LocalDate.of(2019, 06, 14);
         LocalDate localDate4 = LocalDate.of(2019, 06, 17);

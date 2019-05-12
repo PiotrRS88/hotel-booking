@@ -1,7 +1,6 @@
 package com.example.hotelbooking.controllers;
 
 import com.example.hotelbooking.entities.Reservation;
-import com.example.hotelbooking.entities.Room;
 import com.example.hotelbooking.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
