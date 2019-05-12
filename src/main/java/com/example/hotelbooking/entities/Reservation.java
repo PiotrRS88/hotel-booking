@@ -20,7 +20,7 @@ public class Reservation {
     @ManyToOne
     private Guest guest;
 
-    @OneToOne
+    @ManyToOne
     private Room room;
 
     public Reservation() {

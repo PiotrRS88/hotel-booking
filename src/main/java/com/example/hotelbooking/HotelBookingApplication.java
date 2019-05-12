@@ -47,14 +47,14 @@ public class HotelBookingApplication {
         LocalDate localDate1 = LocalDate.of(2019, 06, 10);
         LocalDate localDate2 = LocalDate.of(2019, 06, 14);
 
-        LocalDate localDate3 = LocalDate.of(2019, 06, 15);
+        LocalDate localDate3 = LocalDate.of(2019, 06, 14);
         LocalDate localDate4 = LocalDate.of(2019, 06, 17);
 
         LocalDate localDate5 = LocalDate.of(2019, 07, 02);
         LocalDate localDate6 = LocalDate.of(2019, 07, 06);
 
         Reservation r1 = new Reservation(localDate1, localDate2, g1, room1);
-        Reservation r2 = new Reservation(localDate3, localDate4, g1, room1);
+        Reservation r2 = new Reservation(localDate3, localDate4, g1, room2);
         Reservation r3 = new Reservation(localDate5, localDate6, g2, room3);
         reservationRepository.save(r1);
         reservationRepository.save(r2);

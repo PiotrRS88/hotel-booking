@@ -3,6 +3,7 @@ package com.example.hotelbooking.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "room")
@@ -15,17 +16,17 @@ public class Room {
     private int number;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "room")
-    private Reservation reservation;
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservation;
 
     public Room() {
     }
 
-    public Reservation getReservation() {
+    public List<Reservation> getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservation reservation) {
+    public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
     }
 
