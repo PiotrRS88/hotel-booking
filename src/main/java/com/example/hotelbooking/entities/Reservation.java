@@ -16,7 +16,6 @@ public class Reservation {
     @Column(name = "date_out")
     private LocalDate dateOut;
 
-
     @ManyToOne
     private Guest guest;
 
@@ -80,6 +79,8 @@ public class Reservation {
                 "id=" + id +
                 ", dateIn=" + dateIn +
                 ", dateOut=" + dateOut +
+                ", guest=" + guest +
+                ", room=" + room +
                 '}';
     }
 }

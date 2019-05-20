@@ -19,25 +19,16 @@ public class ReservationReminder {
         this.reservationRepository = reservationRepository;
     }
 
-    @Scheduled(cron = "* * * * * ?")
-    public void sendMail() throws MessagingException {
+    @Scheduled(cron = "* * * * 2 ?")
+    public void sendMail() {
         List<String> emailToRemind = reservationRepository.findEmailToRemind();
 
         emailToRemind.forEach(email -> {
             try {
-                mailService.sendMail(email, "laksjdfhk", "ajksdhgfkj", true);
+                mailService.sendMail(email, "Room booking reminder", "Your room reservation starts tomorrow", true);
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
         });
-
-//        for (String mail : emailToRemind) {
-//            mailService.sendMail(mail,
-//                    "Wygrałeś",
-//                    "<b>10zł</b><br>:P", true);
-//        }
-//
-
-
     }
 }
