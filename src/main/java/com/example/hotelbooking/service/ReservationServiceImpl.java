@@ -47,10 +47,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     @Transactional
     public Reservation save(ReservationDTO reservationDto) {
-        //do sql dopisz warunki zeby daty sie nie nachodzily
         validateDate(reservationDto.getDateIn(), reservationDto.getDateOut());
 
-        final List<Long> availableRoomIds = reservationRepository.findFreeRoomsByDatesAndId(reservationDto.getDateIn(), reservationDto.getDateOut(), reservationDto.getRoomId());
+        final List<Long> availableRoomIds = reservationRepository.findFreeRoomsByDatesAndId(
+                reservationDto.getDateIn(),
+                reservationDto.getDateOut(),
+                reservationDto.getRoomId());
         if (availableRoomIds.isEmpty()) {
             throw new RuntimeException("This room cannot be booked at the given period of time.");
         }

@@ -33,7 +33,7 @@ public class ReservationController {
     @DeleteMapping
     public String cancelReservation(@RequestParam Long id) {
         reservationService.delete(id);
-        return "cancelReservationResult";
+        return "Reservation has been canceled";
     }
 
     @GetMapping("/booked")
