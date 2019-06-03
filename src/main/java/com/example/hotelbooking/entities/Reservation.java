@@ -1,5 +1,7 @@
 package com.example.hotelbooking.entities;
 
+import com.google.common.base.Preconditions;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 

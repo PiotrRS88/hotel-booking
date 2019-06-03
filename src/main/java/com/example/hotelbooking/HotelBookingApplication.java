@@ -31,11 +31,11 @@ public class HotelBookingApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        Guest g1 = new Guest("Adam", "Mickiewicz", "szarkiewicz@gmail.com");
-        guestRepository.save(g1);
+        Guest guest1 = new Guest("Adam", "Mickiewicz", "szarkiewicz@gmail.com");
+        guestRepository.save(guest1);
 
-        Guest g2 = new Guest("Henryk", "Sienkiewicz", "szarkiewicz@gmail.com");
-        guestRepository.save(g2);
+        Guest guest2 = new Guest("Henryk", "Sienkiewicz", "szarkiewicz@gmail.com");
+        guestRepository.save(guest2);
 
         Room room1 = new Room(1);
         Room room2 = new Room(2);
@@ -55,12 +55,12 @@ public class HotelBookingApplication {
         LocalDate localDate5 = LocalDate.of(2019, 07, 02);
         LocalDate localDate6 = LocalDate.of(2019, 07, 06);
 
-        Reservation r1 = new Reservation(localDate1, localDate2, g1, room1);
-        Reservation r2 = new Reservation(localDate3, localDate4, g1, room2);
-        Reservation r3 = new Reservation(localDate5, localDate6, g2, room3);
-        reservationRepository.save(r1);
-        reservationRepository.save(r2);
-        reservationRepository.save(r3);
+        Reservation reservation1 = new Reservation(localDate1, localDate2, guest1, room1);
+        Reservation reservation2 = new Reservation(localDate3, localDate4, guest1, room2);
+        Reservation reservation3 = new Reservation(localDate5, localDate6, guest2, room3);
+        reservationRepository.save(reservation1);
+        reservationRepository.save(reservation2);
+        reservationRepository.save(reservation3);
 
 
     }

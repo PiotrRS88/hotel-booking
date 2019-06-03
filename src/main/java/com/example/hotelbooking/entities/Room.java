@@ -1,6 +1,7 @@
 package com.example.hotelbooking.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.base.Preconditions;
 
 import javax.persistence.*;
 import java.util.List;

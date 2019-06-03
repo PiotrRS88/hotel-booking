@@ -32,6 +32,13 @@ public class ReservationDTO {
         this.dateOut = dateOut;
     }
 
+    public Long getGuestId() {
+        return guestId;
+    }
+
+    public void setGuestId(Long guestId) {
+        this.guestId = guestId;
+    }
     @Override
     public String toString() {
         return "ReservationDTO{" +
@@ -39,13 +46,6 @@ public class ReservationDTO {
                 ", dateIn=" + dateIn +
                 ", dateOut=" + dateOut +
                 '}';
-    }
 
-    public Long getGuestId() {
-        return guestId;
-    }
-
-    public void setGuestId(Long guestId) {
-        this.guestId = guestId;
     }
 }

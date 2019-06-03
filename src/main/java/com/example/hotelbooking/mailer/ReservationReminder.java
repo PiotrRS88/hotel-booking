@@ -19,7 +19,7 @@ public class ReservationReminder {
         this.reservationRepository = reservationRepository;
     }
 
-    @Scheduled(cron = "* * * * 2 ?")
+    @Scheduled(cron = "0 0 * * * ?")
     public void sendMail() {
         List<String> emailToRemind = reservationRepository.findEmailToRemind();
 

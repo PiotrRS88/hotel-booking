@@ -68,7 +68,7 @@ public class ReservationServiceImplTest {
     }
 
     @Test
-    public void delete() {
+    public void should_delete_reservation() {
         //when
         list.add(reservation);
         System.out.println("SetUp list = " + list);
@@ -84,7 +84,7 @@ public class ReservationServiceImplTest {
     }
 
     @Test
-    public void save() {
+    public void should_add_new_reservation() {
 //        Mockito.when(reservationRepository.findFreeRoomsByDatesAndId(res.getRoom().getNumber())).thenReturn(res);
         //when
         list.add(reservation);
@@ -95,7 +95,7 @@ public class ReservationServiceImplTest {
     }
 
     @Test
-    public void findAll() {
+    public void should_return_all_reservations() {
         //        when(reservationRepository.findAll()).thenReturn(list);
 
         //when
@@ -108,6 +108,13 @@ public class ReservationServiceImplTest {
     }
 
     @Test
-    public void findFreeRoomsByDate() {
+    public void should_return_free_rooms_by_given_dates(){
+        //findFreeRoomsByDate()
+
+        //when
+        list.add(reservation);
+
+        //then
+        assertEquals(1, room.getNumber());
     }
 }
