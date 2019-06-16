@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
 @Service
 public class MailService {
     private JavaMailSender javaMailSender;

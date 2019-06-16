@@ -3,14 +3,12 @@ package com.example.hotelbooking.service;
 import com.example.hotelbooking.entities.Reservation;
 import com.example.hotelbooking.entities.Room;
 import com.example.hotelbooking.repositories.GuestRepository;
-import com.example.hotelbooking.repositories.ReservationRepository;
 import com.example.hotelbooking.repositories.RoomRepository;
-import com.example.hotelbooking.service.reservation_dto.ReservationDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,22 +16,17 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
+@Slf4j
+@SpringBootTest
 public class ReservationServiceImplTest {
     @Autowired
     GuestRepository guestRepository;
     @Autowired
     RoomRepository roomRepository;
-    @Mock
-    ReservationRepository reservationRepository;
-    @InjectMocks
-    ReservationServiceImpl reservationServiceImpl;
-    @InjectMocks
-    ReservationDTO reservationDTO;
 
-    //    @Before
-//    public void init(){
-//        MockitoAnnotations.initMocks(this);
-//    }
+    private List<Reservation> list;
+    private Reservation reservation;
+    private Room room;
 
     @Before
     public void setUp() {
@@ -42,8 +35,8 @@ public class ReservationServiceImplTest {
 
         reservation = new Reservation();
         room = new Room();
-        localDate1 = LocalDate.of(2019, 05, 13);
-        localDate2 = LocalDate.of(2019, 05, 15);
+        final LocalDate localDate1 = LocalDate.of(2019, 5, 13);
+        final LocalDate localDate2 = LocalDate.of(2019, 5, 15);
 
         reservation.setId(1L);
         reservation.setDateIn(localDate1);
@@ -51,12 +44,6 @@ public class ReservationServiceImplTest {
         reservation.setRoom(room);
         room.setNumber(1);
     }
-
-    private List<Reservation> list;
-    private Reservation reservation;
-    private Room room;
-    private LocalDate localDate1;
-    private LocalDate localDate2;
 
 
     @Test
@@ -71,13 +58,11 @@ public class ReservationServiceImplTest {
     public void should_delete_reservation() {
         //when
         list.add(reservation);
-        System.out.println("SetUp list = " + list);
-
-//        when(reservationServiceImpl.delete(1L));
+        log.info("SetUp list = " + list);
 
         list.remove(reservation);
 
-        System.out.println("List after test: " + list);
+        log.info("List after test: " + list);
 
         //then
         assertEquals(0, list.size());
@@ -108,7 +93,7 @@ public class ReservationServiceImplTest {
     }
 
     @Test
-    public void should_return_free_rooms_by_given_dates(){
+    public void should_return_free_rooms_by_given_dates() {
         //findFreeRoomsByDate()
 
         //when

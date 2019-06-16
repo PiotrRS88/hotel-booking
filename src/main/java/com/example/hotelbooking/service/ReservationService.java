@@ -11,7 +11,6 @@ public interface ReservationService {
 
     Iterable<Reservation> getEmptyRooms();
 
-
     void delete(Long id);
 
     Reservation save(ReservationDTO reservationDto);

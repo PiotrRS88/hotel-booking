@@ -46,14 +46,14 @@ public class HotelBookingApplication {
         roomRepository.save(room3);
         roomRepository.save(room4);
 
-        LocalDate localDate1 = LocalDate.of(2019, 05, 13);
-        LocalDate localDate2 = LocalDate.of(2019, 05, 15);
+        LocalDate localDate1 = LocalDate.of(2019, 5, 13);
+        LocalDate localDate2 = LocalDate.of(2019, 5, 15);
 
-        LocalDate localDate3 = LocalDate.of(2019, 06, 14);
-        LocalDate localDate4 = LocalDate.of(2019, 06, 17);
+        LocalDate localDate3 = LocalDate.of(2019, 6, 14);
+        LocalDate localDate4 = LocalDate.of(2019, 6, 17);
 
-        LocalDate localDate5 = LocalDate.of(2019, 07, 02);
-        LocalDate localDate6 = LocalDate.of(2019, 07, 06);
+        LocalDate localDate5 = LocalDate.of(2019, 7, 2);
+        LocalDate localDate6 = LocalDate.of(2019, 7, 6);
 
         Reservation reservation1 = new Reservation(localDate1, localDate2, guest1, room1);
         Reservation reservation2 = new Reservation(localDate3, localDate4, guest1, room2);
@@ -61,7 +61,5 @@ public class HotelBookingApplication {
         reservationRepository.save(reservation1);
         reservationRepository.save(reservation2);
         reservationRepository.save(reservation3);
-
-
     }
 }

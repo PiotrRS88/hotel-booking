@@ -7,7 +7,6 @@ import com.example.hotelbooking.repositories.GuestRepository;
 import com.example.hotelbooking.repositories.ReservationRepository;
 import com.example.hotelbooking.repositories.RoomRepository;
 import com.example.hotelbooking.service.reservation_dto.ReservationDTO;
-import com.google.common.base.Preconditions;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -48,7 +47,6 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     @Transactional
     public Reservation save(ReservationDTO reservationDto) {
-//                Preconditions.checkArgument(reservationDto.getRoomId() <= 0, "Room number: " + reservationDto.getRoomId() + " does not exsist.");
 
         validateDate(reservationDto.getDateIn(), reservationDto.getDateOut());
 
@@ -59,8 +57,7 @@ public class ReservationServiceImpl implements ReservationService {
         if (availableRoomIds.isEmpty()) {
             throw new RuntimeException("This room cannot be booked at the given period of time.");
         }
-//ExceptionHandler
-//ControllerAdvice
+
         Reservation reservation = new Reservation();
         reservation.setDateIn(reservationDto.getDateIn());
         reservation.setDateOut(reservationDto.getDateOut());

@@ -75,14 +75,14 @@ public class Reservation {
         this.dateOut = dateOut;
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", dateIn=" + dateIn +
-                ", dateOut=" + dateOut +
-                ", guest=" + guest +
-                ", room=" + room +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Reservation{" +
+//                "id=" + id +
+//                ", dateIn=" + dateIn +
+//                ", dateOut=" + dateOut +
+//                ", guest=" + guest +
+//                ", room=" + room +
+//                '}';
+//    }
 }
